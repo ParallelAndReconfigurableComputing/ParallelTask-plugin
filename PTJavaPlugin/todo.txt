@@ -1,0 +1,15 @@
+
+
+I've also found a few minor annoyances with the ParaTask Eclipse plugin:
+ 
+
+1.  It moves .ptjava files to the bin folder unless you manually filter
+> them 
+
+2.  It packages .ptjava files into .jar files (hence losing on some
+> of the intellectual protection of merely distributing the .class files) 
+
+3. It has on a few occasions messed with SVN since the ParaTask plugin
+> changes files without the Eclipse SVN plugins knowledge so I've had two
+> occasions where there were mismatches between local copy and what the
+> Eclipse SVN plugin thought the local copy looked like 

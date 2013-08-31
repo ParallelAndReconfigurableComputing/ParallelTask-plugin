@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Parallel IT - Parallel Iterator and Parallel Task</title>
+    <link rel="icon" type="image/png" href="themes/default/images/common/symbol_icon.png"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="text.css" type="text/css" />
+</head>
+<body>
+    <!-- Container Divider Start -->
+    <div id="Container">
+        <!-- Header Divider Start -->
+        <div id="Header">
+            <div id="ParallelITLogo">
+                <a href=""><img src="themes/default/images/common/ParallelIT.png" alt="ParallelIT"/></a>
+            </div>
+            <div style="width: 250px; height: 60px; float: left;">
+                <!-- FILLER DIVIDER -->
+            </div>
+            <div id="UOALogo">
+                <a href="http://www.auckland.ac.nz"><img src="themes/default/images/common/UOA_Logo_RGB_small.jpg" alt="University of Auckland"/></a>
+            </div>
+        <!-- Header Divider End -->
+        </div>
+        <!-- SectionMenu Start -->
+        <div id="SectionMenu" >
+			<!-- SuckerfishMenu Start -->
+            <ul class="SuckerfishMenu">
+                <li><a href="PT_PluginUserManual.html">User Manual</a></li>
+                <li><a href="PT_PluginCompilerRuntimeGeneration.html">Jar Generation Guide</a></li>
+            <!-- SuckerfishMenu End -->
+            </ul>
+        <!--SectionMenu End -->
+        </div>
+        <!--Content Divider Start-->
+        <div id="Content" >
+            <div id="ArchiveWrap">
+                <h2>PTJava Eclipse Plug-In - User's Manual</h2>
+                <hr/>
+                <div>
+                    <h4>Contents</h4>
+                    <ol>
+                        <li><a href="#a001">Creating a PTJava Project</a></li>
+                        <li><a href="#a002">Creating a PTJava Class File</a></li>
+                        <li><a href="#a003">Compiling a PTJava Class File</a></li>
+                        <li><a href="#a004">Other PTJava Preferences</a></li>
+                        <li><a href="#a005">PTJava Task Viewer</a></li>
+                        <li><a href="#a006">Compiler Error Handling</a></li>
+                    </ol>
+                </div>
+                <h4 id="a001">Creating a PTJava Project</h4>
+                <hr/>
+                <p>A PTJava Project is simply a Java Project with the PTJava nature associated with the project.<br/>
+                The PTJava nature allows the PTJava builder to compile .ptjava sources files into .java files. <br/>
+                To create a PTJava Project:</p>
+                <ul>
+                    <li>Select <b>File >> New >> Project...</b></li>
+                    <li>Under PTJava, select PTJava Project as shown below:</li>
+                </ul>
+                <a href="themes/default/images/PT_PluginUserManual/002.png"><img src="themes/default/images/PT_PluginUserManual/002.png" alt="002" style="width: 768px; height: 576px;"/></a>
+                <ul>
+                    <li>Set the Java specific project settings for the first page (and click Next):</li>
+                </ul>
+                <a href="themes/default/images/PT_PluginUserManual/003.png"><img src="themes/default/images/PT_PluginUserManual/003.png" alt="003"/></a>
+                <ul>
+                    <li>Set the Java settings on the second page (and click Next):</li>
+                </ul>
+                <a href="themes/default/images/PT_PluginUserManual/004.png"><img src="themes/default/images/PT_PluginUserManual/004.png" alt="004"/></a>
+                <ul>
+                    <li>Set the PTJava Preferences:
+                        <ul>
+                            <li>The plug-in contains a built in Parallel Task Compiler. However, a custom compiler can be used if desired.</li>
+                            <li>The plug-in also adds a default PTRuntime.jar to the Java Build Path of the project. This can  be overridden here with a custom PTRuntime.jar file if desired.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p><b>Notes:</b></p>
+                <p>When the plug-in starts up, it puts a copy of the default PTRuntime.jar into the workspace root directory of Eclipse. This is because the default PTRuntime.jar located inside the plug-in is not visible to projects in the workspace.</p>
+                <p>If a custom PTRuntime.jar file is used, the Java Build Path of all PTJava Projects in the workspace will be altered to use the custom PTRuntime.jar.</p>
+                <p>Likewise, if a custom compiler is specified, then all PTJava Projects will be compiled using the custom compiler.</p>
+                <a href="themes/default/images/PT_PluginUserManual/005.png"><img src="themes/default/images/PT_PluginUserManual/005.png" alt="005"/></a>
+                <ul>
+                    <li>Click <b>Finish.</b> This creates the PTJava Project.</li>
+                </ul>
+
+                <h4 id="a002">Creating a PTJava Class File</h4>
+                <hr/>
+                <p>To create a PTJava Class File (and associated Java file):</p>
+                <ul>
+                    <li>Select <b>File >> New >> Other...</b></li>
+                    <li>Under PTJava, select PTJava Class as shown below:</li>
+                </ul>
+                <a href="themes/default/images/PT_PluginUserManual/006.png"><img src="themes/default/images/PT_PluginUserManual/006.png" alt="006"/></a>
+                <ul>
+                    <li>Select the parent folder to place the new file.</li>
+                    <li>Specify the class name. </li>
+                    <li>Click <b>Finish.</b> This will create the class files</li>
+                </ul>
+                <a href="themes/default/images/PT_PluginUserManual/007.png"><img src="themes/default/images/PT_PluginUserManual/007.png" alt="007"/></a>
+                <p>The example below will generate two files (shown below):</p>
+                <ul>
+                    <li>NewPTClass.ptjava</li>
+                    <li>NewPTClass.java</li>
+                </ul>
+                <p>Manually editing the Java class is not recommended, as it is automatically overwritten on project builds.</p>
+                <a href="themes/default/images/PT_PluginUserManual/010.png"><img src="themes/default/images/PT_PluginUserManual/010.png" alt="010" style="width: 768px; height: 576px;"/></a>
+                <p>The user can freely edit the PTJava class file. The PTJava text editor is derived from the Java text editor, and therefore has a very similar look and feel to it.</p>
+                <h4 id="a003">Compiling a PTJava Class File</h4>
+                <hr/>
+                <ul>
+                    <li>Select <b>Window >> Preferences.</b><br/>
+                The PTJava Preference page contains options for compiling PTJava class files. </li>
+                    <li>Make sure that "Invoke PTJava Compiler on builds" is checked (see below).<br/>
+                This will tell the compiler to build any .ptjava files in the same way the Java Compiler works on Java files</li>
+                    <li>Select <b>Project >> Build Automatically</b> to turn on automatic compilation. Alternatively, select <b>Project >> Build Project</b> to manually invoke the compiler.</li>
+                </ul>
+                <a href="themes/default/images/PT_PluginUserManual/009.png"><img src="themes/default/images/PT_PluginUserManual/009.png" alt="009"/></a>
+                <p><b>Notes:</b></p>
+                <p>When the plug-in starts up, it puts a copy of the default PTRuntime.jar into the workspace root directory of Eclipse. This is because the default PTRuntime.jar located inside the plug-in is not visible to projects in the workspace.</p>
+                <p>If a custom PTRuntime.jar file is used, the Java Build Path of all PTJava Projects in the workspace will be altered to use the custom PTRuntime.jar.</p>
+                <p>Likewise, if a custom compiler is specified, then all PTJava Projects will be compiled using the custom compiler.</p>
+                <h4 id="a004">Other PTJava Preferences</h4>
+                <hr/>
+                <p>Since the PTJava text editor is derived from the Java text editor (JDT), preferences such as syntax highlighting can be altered via the Java Text Editor Preferences page: <b>Window >> Preferences >> Java.</b></p>
+                <h4 id="a005">PTJava Task Viewer</h4>
+                <hr/>
+                <p>A view has been created to summarize the TASK and INTERACTIVE_TASK declarations.<br/>
+                    This can be shown using the following commands:</p>
+                <ul>
+                    <li>Click <b>Window >> Show View >> Other</b></li>
+                    <li>Under the category "PTJava", click "PTJava Task Viewer"</li>
+                    <li>Click <b>Ok</b></li>
+                </ul>
+                <p><b>Notes:</b></p>
+                <p>The PTJava Task Viewer only shows declarations for PTJava files (with the extension ".ptjava").</p>
+                <p>The Task Viewer reads the declarations from the last saved instance of the file, and listens for selection change events to refresh the view. Therefore, modified declarations will not show in the view until the file is saved and the editing cursor is moved in the editor.</p>
+                
+                <h4 id="a006">Compiler Error Handling</h4>
+                <hr/>
+                <p>The PTJava Compiler is a source-to-source compiler, that generates Java files (.java) from PTJava files (.ptjava). The PTJava Editor plug-in deals with compilation errors depending on whether the error occured in a PTJava file or a generated Java file:</p>
+                <ul>
+                    <li>If the error occurred when compiling a PTJava file (to produce a Java file):
+                        <ul>
+                            <li>The error will automatically be displayed on the corresponding .ptjava file.</li>
+                        </ul>
+                    </li>
+                    <li>If the compilation error occurred when compiling a generated Java file
+                        <ul>
+                            <li>The plug-in will attempt to reflect the error onto the PTJava file that generated the erroneous Java file.</li>
+                            <li>Any errors that are reflected will also remain in the generated Java file</li>
+                            <li>It follows that disabling errors under <b>Window >> Preferences >> Java >> Compiler >> Errors/Warnings</b> will also disable the reflection of these errors.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        <!--Content Divider End-->
+        </div>
+    <!-- Container Divider End -->
+    </div>
+    <!-- Footer Divider Start-->
+    <div id="Footer">
+        <div>
+            <a id="ParallelResearchGroupLogo" href="http://www.ece.auckland.ac.nz/~sinnen/lab.html"><img src="themes/default/images/common/PRCL.png" alt="Parallel and Reconfigurable Computing Lab"/></a>
+        </div>
+    <!-- Footer Divider End-->
+    </div>
+</body>
+</html>

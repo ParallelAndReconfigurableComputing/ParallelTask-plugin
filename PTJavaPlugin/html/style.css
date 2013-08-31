@@ -1,0 +1,342 @@
+/*
+Theme Name: Default
+Description:
+Version: 0.0
+Author: Christopher Chong
+*/
+
+/***************************************
+        Global Styles
+***************************************/
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    height: 100%;
+    background-color: #252e3c;
+    background-image: url(themes/default/images/common/header_bar.png);
+    background-repeat: repeat-x;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1,h2,h3,h4 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: normal;	
+	line-height: 1em;	
+	color: #000;
+	margin-bottom: 5px;
+}
+
+h1 { 
+	font-size: 46px;	
+	letter-spacing: -1px;
+}
+
+h2 { 
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 18px;	
+	border-bottom: 1px #ccc dashed;
+}
+
+h4 {
+	font-size: 18px;	
+}
+
+h5, h6 { 
+	font-size: 14px;
+	text-transform:uppercase;
+	letter-spacing:2px;	
+}
+
+img {
+    border: none;
+}
+
+a { 
+    text-decoration: underline;
+    /* Stops the annoying dashed line pattern around the links*/
+    outline: none;
+    color: #660000;
+}
+
+a:visited {
+    outline: none;
+}
+
+hr {
+    color: #dddddd;
+}
+/***************************************
+        Layout
+***************************************/
+
+#Container {
+    clear: both;
+    margin: 0 auto;
+    width: 804px;
+    /* Gurantees footer is at bottom of screen */
+    height: 85%;
+    padding: 0 0 0 0;
+}
+
+#Header {
+    position: relative;
+    width: 804px;
+    height: 160px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    /*background-image: url(themes/default/images/common/header.png);*/
+    background-repeat: no-repeat;
+}
+
+/***************************************
+        Header Logos
+***************************************/
+#ParallelITLogo {
+    margin: 60px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    float: left;
+}
+
+#UOALogo {
+    margin: 40px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    background-color: #ffffff;
+    border: 2px solid #6b6b6b;
+    float: right;
+}
+/***************************************
+        Navigation
+***************************************/
+
+#SectionMenu {
+    width: 802px;
+    height: 40px;
+    background-image: url(themes/default/images/common/bar_gradient.png);
+    background-repeat: repeat-x;
+    margin: 0px 0px 0px 0px;
+    padding: 0 0 0 0;
+    border: 1px solid #082f54;
+}
+
+ul.SuckerfishMenu {
+    list-style: none;
+    position: relative;
+    list-style-type: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0 0 0 0;
+    border: none;
+}
+
+ul.SuckerfishMenu li {
+    float: left;
+    position: relative;
+}
+
+ul.SuckerfishMenu li a {
+    float: left;
+    color: #dddddd;
+    position: relative;
+    font-size: 14px;
+    /*text-transform: uppercase;*/
+    font-weight: bold;
+    text-decoration: none;
+
+    padding: 10px 10px 10px 10px; 
+    margin: 0px 20px 0px 20px; 
+}
+
+ul.SuckerfishMenu li a:hover {
+	text-decoration: underline;
+}
+
+ul.SuckerfishMenu li ul {
+    position: absolute;
+    display: none;
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+ul.SuckerfishMenu li:hover ul {
+    display: block;
+}
+
+ul.SuckerfishMenu li ul li {
+    position: relative;
+    top: 40px;
+    background-color: #082f54;
+}
+
+ul.SuckerfishMenu li ul li a {
+    display: block;
+    top: 0;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    padding: 10px 0 0 0;
+}
+
+/***************************************
+        Layout
+***************************************/
+
+/*
+    For content with NO side pane
+*/
+#Content {
+    float: left;
+    width: 804px;
+
+    padding: 0 0 0 0;
+    margin: 0 0 20px 0;
+}
+
+/*
+    For content with a side pane on the right
+*/
+#ContentNarrow {
+    float: left;
+    width: 494px;
+    margin: 0 10px 20px 0;
+}
+
+#Sidepane {
+    float: left;
+    width: 300px;
+    margin: 0 0 0 0px;
+}
+
+.comsep {
+    display: none;
+}
+
+/***************************************
+        Custom
+***************************************/
+#ArchiveWrap {
+    width: 780px;
+    background-color: #fcfcfc;
+    border: 2px solid #6b6b6b;
+    margin: 0 0 0 0;
+    padding: 10px 10px 10px 10px;
+}
+
+/*#ArchiveWrap p,ul,ol {
+    margin-left: 32px;
+    margin-right: 32px;
+}*/
+
+
+
+#ArchiveWrapNarrow {
+    width: 470px;
+    background-color: #fcfcfc;
+    border: 2px solid #6b6b6b;
+    margin: 0 0 0 0;
+    padding: 10px 10px 10px 10px;
+}
+
+#ArchiveWrapSidepane {
+    width: 276px;
+    background-color: #fcfcfc;
+    border: 2px solid #6b6b6b;
+    margin: 0 0 0 0;
+    padding: 10px 10px 10px 10px;
+}
+
+/***************************************
+        Comment
+***************************************/
+
+.Comment {
+}
+
+.CommentHeader {
+    /*float: left;*/
+    /*margin: 10px 10px 10px 10px;*/
+    clear: right;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: none;
+}
+
+.CommentTitle {   
+    float: left;
+    height: 48px;
+    margin: 0px 10px 0px 10px;
+    padding: 0 0 0 0;
+    border: none;
+}
+
+.CommentBody {
+    clear: both;
+    padding: 0 10px 0 60px;
+    margin: 0 0 0 0;
+    border: none;
+}
+
+.AvatarImage {
+    float:left;
+    width: 48px;
+    height: 48px;
+    margin: 0 0 0 ;
+    padding: 0 0 0 0;
+    border: none;
+}
+
+p.Title {
+ 	font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+	font-weight: normal;
+	line-height: 1em;
+	color: #000;
+	margin: 16px 0 0 0;   
+}
+
+/***************************************
+        Footer
+***************************************/
+
+#Footer {
+    clear: both;
+    width: 100%;
+    height: 15%;
+    /*background-color: #ff00ff;*/
+    background-image: url(themes/default/images/common/header_bar_lower.png);
+    background-repeat: repeat-x;
+}
+
+#ParallelResearchGroupLogo {
+    float: left;
+    margin: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
+    background-color: #ffffff;
+    border: 2px solid #6b6b6b;
+}
+
+#ParallelResearchGroupLogo img {
+    width: 331px;
+    height: 45px;
+}
+
+/***************************************
+        Contact Info
+***************************************/
+
+ul.ContactInfo {
+    list-style: none;
+}
+
+li.ContactInfo {
+    margin: 0 0 10px 0;
+}
