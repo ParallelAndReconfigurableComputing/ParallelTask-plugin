@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="nz.ac.auckland.ptjava.internal.editors.PTJavaTextEditor"
+            contributorClass="nz.ac.auckland.ptjava.editors.PTJavaTextEditorContributor"
+            default="false"
+            extensions="ptjava"
+            id="nz.ac.auckland.ptjava.editors.PTJavaTextEditor"
+            name="PTJava Text Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            class="nz.ac.auckland.ptjava.internal.editors.PTJavaDocumentSetupParticipant"
+            extensions="ptjava">
+      </participant>
+   </extension>
+   <extension
+         id="ptjavaFileBuilder"
+         name="PTJava Sample Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="nz.ac.auckland.ptjava.builder.PTJavaFileBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="ptjavaFileBuilderNature"
+         name="PTJava File Builder Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="nz.ac.auckland.ptjava.builder.PTJavaFileBuilderNature">
+         </run>
+      </runtime>
+      <builder
+            id="nz.ac.auckland.ptjava.ptjavaFileBuilder">
+      </builder>
+   </extension>
+    <extension
+          id="ptjavamarker"
+          name="PTJava Problem Marker"
+          point="org.eclipse.core.resources.markers">
+       <super
+             type="org.eclipse.core.resources.problemmarker">
+       </super>
+       <super
+             type="org.eclipse.core.resources.textmarker">
+       </super>
+       <persistent
+             value="true">
+       </persistent>
+    </extension>
+    <extension
+          point="org.eclipse.ui.preferencePages">
+       <page
+             class="nz.ac.auckland.ptjava.preferences.PTJavaPreferencePage"
+             id="nz.ac.auckland.ptjava.preferences.PTJavaPreferencePage"
+             name="PTJava">
+       </page>
+    </extension>
+    <extension
+          point="org.eclipse.core.runtime.preferences">
+       <initializer
+             class="nz.ac.auckland.ptjava.preferences.PreferenceInitializer">
+       </initializer>
+    </extension>
+    <extension
+          point="org.eclipse.ui.newWizards">
+       <wizard
+             category="nz.ac.auckland.ptjava.category"
+             class="nz.ac.auckland.ptjava.newprojectwizard.NewProjectWizard"
+             icon="icons/full/etool16/newjprj_wiz.gif"
+             id="nz.ac.auckland.ptjava.newprojectwizard"
+             name="PTJava Project"
+             project="true">
+       </wizard>
+       <category
+             id="nz.ac.auckland.ptjava.category"
+             name="PTJava">
+       </category>
+       <wizard
+             category="nz.ac.auckland.ptjava.category"
+             class="nz.ac.auckland.ptjava.newclasswizard.NewPTJavaClassWizard"
+             icon="icons/full/etool16/newclass_wiz.gif"
+             id="nz.ac.auckland.ptjava.wizard1"
+             name="PTJava Class">
+       </wizard>
+       
+       <wizard
+             category="nz.ac.auckland.ptjava.category"
+             class="nz.ac.auckland.ptjava.newprojectwizard.NewAndroidProjectWizard"
+             icon="icons/full/etool16/newjprj_wiz.gif"
+             id="nz.ac.auckland.ptjava.newandroidprojectwizard"
+             name="PTJava Android Project"
+             project="true">
+       </wizard>
+    </extension>
+    <extension
+          point="org.eclipse.ui.views">
+       <category
+             id="nz.ac.auckland.ptjava"
+             name="PTJava">
+       </category>
+       <view
+             category="nz.ac.auckland.ptjava"
+             class="nz.ac.auckland.ptjava.views.PTJavaView"
+             icon="icons/full/etool16/task_icon.gif"
+             id="nz.ac.auckland.ptjava.views.SampleView"
+             name="PTJava Task Viewer">
+       </view>
+    </extension>
+</plugin>
