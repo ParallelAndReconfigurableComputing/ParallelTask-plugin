@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build_plugin" name="nz.ac.auckland.ptjava">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../Eclipse/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Plug-in Dependencies.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui_3.104.0.v20121024-145224.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt_3.100.1.v4236b.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.gtk.linux.x86_64_3.100.1.v4236b.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jface_3.8.102.v20130123-162658.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.commands_3.6.2.v20130123-162658.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.workbench_3.104.0.v20130204-164612.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.e4.ui.workbench3_0.12.0.v20120521-2329.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.8.0.v20120912-155025.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.8.2.v20130124-134944.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.jobs_3.5.300.v20120912-155018.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.101.v20130108-163257/runtime_registry_compatibility.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry_3.5.200.v20120522-1841.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.5.1.v20121031-182809.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.3.100.v20120522-1841.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.editors_3.8.0.v20120523-1540.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.filebuffers_3.5.200.v20120523-1310.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jface.text_3.8.2.v20121126-164145.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.text_3.5.200.v20120523-1310.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.views_3.6.100.v20120705-114010.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.resources_3.8.1.v20121114-124432.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.ui_3.8.2.v20130107-165834.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.core_3.8.3.v20130121-145325.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.compiler.apt_1.0.600.v20130116-050536.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.compiler.tool_1.0.200.v20130116-050536.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.ide_3.8.2.v20121106-165923.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/sdkuilib.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/ninepatch.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/freemarker-2.3.19.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/rule_api.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/assetstudio.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/lint_api.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/lint_checks.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/lombok-ast-0.2.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/asm-4.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/asm-tree-4.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/asm-analysis-4.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/propertysheet.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/ant-glob.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/swtmenubar.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.adt_21.1.0.v201302060044-569685/libs/manifmerger.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ltk.core.refactoring_3.6.0.v20120523-1543.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/com.android.ide.eclipse.base_21.1.0.v201302060044-569685.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/common.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/commons-codec-1.4.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/commons-compress-1.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/commons-logging-1.1.1.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/guava-13.0.1.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/httpclient-4.1.1.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/httpcore-4.1.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/httpmime-4.1.1.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/kxml2-2.3.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/layoutlib_api.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/sdklib.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/sdkstats.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/dvlib.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/workspace/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/com.android.ide.eclipse.base_21.1.0.v201302060044-569685/libs/sdk_common.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.workbench.texteditor_3.8.0.v20120523-1310.jar"/>
+    </path>
+    <path id="nz.ac.auckland.ptjava.classpath">
+        <pathelement location="PTRuntime.jar"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <pathelement location="bin"/>
+        <pathelement location="PTCompiler.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="nz.ac.auckland.ptjava.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+
+	<target  depends="build" name="build_plugin">
+	  <java fork="true" failonerror="true" classname="org.eclipse.equinox.launcher.Main" >
+		<arg value="-clean"/>
+		<arg value="-noupdate"/>
+		<arg value="-application"/>
+		<arg value="org.eclipse.ant.core.antRunner"/>
+		<arg value="-data"/>
+		<arg file="."/>
+		<arg value="-file"/>
+		<arg file="autogen.xml"/>
+
+		<classpath>
+		  <fileset dir="${ECLIPSE_HOME}/plugins">
+			<include name="org.eclipse.equinox.launcher_*.jar"/>
+		  </fileset>
+		</classpath>
+	  </java>
+	</target>
+</project>
