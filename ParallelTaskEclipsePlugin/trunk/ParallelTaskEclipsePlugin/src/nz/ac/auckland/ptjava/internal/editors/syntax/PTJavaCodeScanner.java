@@ -67,7 +67,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 public class PTJavaCodeScanner extends AbstractJavaScanner {
 	//  NOTE: Modify this class to alter syntax highlighting for the "Default" document partition
 	
-	private static String[] fgPTJavaKeywords= { "TASK", "IO_TASK", "dependsOn", "notify", "notifyInterim", "asyncCatch", "notifyGUI", "notifyInterimGUI" };
+	private static String[] fgPTJavaKeywords= { "TASK", "IO_TASK", "dependsOn", "notify", "notifyInterim", "asyncCatch" };
 	
 	/**
 	 * Rule to detect java operators.
