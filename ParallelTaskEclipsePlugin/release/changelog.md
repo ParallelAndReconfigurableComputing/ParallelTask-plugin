@@ -14,4 +14,7 @@ This is an example of change log, please follow the format specified below.
 - first release
 
 -->
+2.2.3 / 2013-11-19
+===
 
+- Fixed a bug: modify a ptjava file and save, then the corresponding java file will be regenerated automotically.
