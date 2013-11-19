@@ -287,8 +287,8 @@ public class PTJavaFileBuilder extends IncrementalProjectBuilder {
 			}
 			
 			//  build string to execute
-			String cmd = new String("java -cp ") + fCompilerPath
-			+ new String(" paratask.compiler.ParaTaskParser ") + toCompile;
+			String cmd = new StringBuilder().append("java -cp ").append(fCompilerPath)
+					.append(" pt.compiler.ParaTaskParser ").append(toCompile).toString();
 			
 			Runtime rt = Runtime.getRuntime();
 			try {
@@ -389,14 +389,14 @@ public class PTJavaFileBuilder extends IncrementalProjectBuilder {
 	 * @return The MarkerInfo object that represents the error
 	 */
 	private static MarkerInfo createMarkerFromErrorString(String errorString) {
-		Pattern pattern= Pattern.compile("paratask\\.compiler\\.parser\\.ParseException: Encountered \".*\" at (line (\\d+)), column (\\d)+\\.");
+		Pattern pattern= Pattern.compile("pt\\.compiler\\.parser\\.ParseException: Encountered \".*\" at (line (\\d+)), column (\\d)+\\.");
 		Matcher matcher= pattern.matcher(errorString);
 		
 		MarkerInfo m = new MarkerInfo();
 		if (matcher.find()) {
 			//m.fMsg= matcher.group();
 			
-			m.fMsg= errorString.substring(0, errorString.indexOf("at paratask.compiler.parser.JavaParser"));
+			m.fMsg= errorString.substring(0, errorString.indexOf("at pt.compiler.parser.JavaParser"));
 			
 			m.fLocation= matcher.group(1);
 			m.fLineNumber= Integer.parseInt(matcher.group(2));
