@@ -48,34 +48,42 @@ public class AddingPTNatureHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// get workbench window
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
 		// set selection service
 		ISelectionService service = window.getSelectionService();
 		// set structured selection
-		IStructuredSelection structured = (IStructuredSelection) service.getSelection();
-	 
-		//check if it is an IProject
-		if (structured.getFirstElement() instanceof IProject) {
-			// get the selected file
-			IProject project = (IProject) structured.getFirstElement();
+		IStructuredSelection structured = (IStructuredSelection) service
+				.getSelection();
+
+		IProject project = null;
+		IJavaProject javaProject = null;
+
+		if (structured.getFirstElement() instanceof IJavaProject) {
+			javaProject = (IJavaProject) structured.getFirstElement();
+			project = javaProject.getProject();
+		} else if (structured.getFirstElement() instanceof IProject) {
+			project = (IProject) structured.getFirstElement();
+			// project.isNatureEnabled("org.eclipse.jdt.core.javanature")
 			try {
-				
-				//project.isNatureEnabled("org.eclipse.jdt.core.javanature")
 				if (project.hasNature(JavaCore.NATURE_ID)) {
-			        IJavaProject javaProject = JavaCore.create(project);
-			        PTJavaFileBuilderNature.addNature(project);
-			        
-			        // set up compiler to not copy .ptjava files to output
-					Map options = javaProject.getOptions(false);
-					options.put(JavaCore.CORE_JAVA_BUILD_RESOURCE_COPY_FILTER, "*.ptjava");
-					javaProject.setOptions(options);
-			    }
+					javaProject = JavaCore.create(project);
+				}
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
-			System.out.println("Selected project name:" + project.getName());
 		}
-		
+
+		if (project != null && javaProject != null) {
+			PTJavaFileBuilderNature.addNature(project);
+			
+			// set up compiler to not copy .ptjava files to output
+			Map options = javaProject.getOptions(false);
+			options.put(JavaCore.CORE_JAVA_BUILD_RESOURCE_COPY_FILTER,
+					"*.ptjava");
+			javaProject.setOptions(options);
+			System.out.println("ParaTask Nature added to project: " + project.getName());
+		}
 		return null;
 	}
 }
