@@ -123,12 +123,28 @@
        <handler
              class="nz.ac.auckland.ptjava.commands.AddingPTNatureHandler"
              commandId="nz.ac.auckland.ptjava.commands.AddingPTNature">
+             <!-- doesn't work correctly
+           <enabledWhen>
+               <iterate operator="and" ifEmpty="false">
+                    <test property="org.eclipse.core.resources.projectNature"
+                        value="org.eclipse.jdt.core.javanature">
+                    </test>
+                    <not>
+                       <test
+                             property="org.eclipse.core.resources.projectNature"
+                             value="nz.ac.auckland.ptjava.ptjavaFileBuilderNature">
+                       </test>
+                    </not>
+                </iterate>
+           </enabledWhen>
+           -->
        </handler>
     </extension>
     <extension point="org.eclipse.ui.menus">
+    
         <menuContribution
-            locationURI=
-                 "popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+              allPopups="true"
+              locationURI="popup:org.eclipse.ui.popup.any?after=additions">
         <command
             commandId="nz.ac.auckland.ptjava.commands.AddingPTNature"
             icon="icons/paraicon.png"
@@ -136,7 +152,7 @@
             mnemonic="M1+P"
             tooltip="Add ParaTask support to an Java/Android project">
             <visibleWhen>
-                <iterate operator="and">
+                <iterate operator="and" ifEmpty="false">
                     <test property="org.eclipse.core.resources.projectNature"
                         value="org.eclipse.jdt.core.javanature">
                     </test>
@@ -149,6 +165,28 @@
                 </iterate>
             </visibleWhen>
          </command>
+      </menuContribution>
+	  <menuContribution
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+            <command
+                  commandId="nz.ac.auckland.ptjava.commands.AddingPTNature"
+                  icon="icons/paraicon.png"
+                  label="Add ParaTask Nature"
+                  tooltip="Add ParaTask support to an Java/Android project">
+              <visibleWhen>
+                <iterate operator="and" ifEmpty="false">
+					<instanceof value="org.eclipse.jdt.core.IJavaProject"/>
+					<not>
+						<adapt type="org.eclipse.core.resources.IProject">
+                          <test
+                             property="org.eclipse.core.resources.projectNature"
+                             value="nz.ac.auckland.ptjava.ptjavaFileBuilderNature">
+                          </test>
+       					</adapt>
+                    </not>
+                </iterate>
+              </visibleWhen>
+            </command>
       </menuContribution>
    </extension>
 </plugin>
