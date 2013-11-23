@@ -92,15 +92,6 @@
              id="nz.ac.auckland.ptjava.wizard1"
              name="PTJava Class">
        </wizard>
-       
-       <wizard
-             category="nz.ac.auckland.ptjava.category"
-             class="nz.ac.auckland.ptjava.newprojectwizard.NewAndroidProjectWizard"
-             icon="icons/full/etool16/newjprj_wiz.gif"
-             id="nz.ac.auckland.ptjava.newandroidprojectwizard"
-             name="PTJava Android Project"
-             project="true">
-       </wizard>
     </extension>
     <extension
           point="org.eclipse.ui.views">
@@ -116,4 +107,42 @@
              name="PTJava Task Viewer">
        </view>
     </extension>
+    <extension
+          point="org.eclipse.ui.commands">
+       <category
+             id="nz.ac.auckland.ptjava"
+             name="PTJava">
+       </category>
+       <command
+             id="nz.ac.auckland.ptjava.commands.AddingPTNature"
+             name="AddingPTNature">
+       </command>
+    </extension>
+    <extension
+          point="org.eclipse.ui.handlers">
+       <handler
+             class="nz.ac.auckland.ptjava.commands.AddingPTNatureHandler"
+             commandId="nz.ac.auckland.ptjava.commands.AddingPTNature">
+       </handler>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI=
+                 "popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+        <command
+            commandId="nz.ac.auckland.ptjava.commands.AddingPTNature"
+            icon="icons/paraicon.png"
+            label="Add ParaTask Nature"
+            mnemonic="M1+P"
+            tooltip="Add ParaTask support to an Java/Android project">
+            <visibleWhen>
+                <iterate operator="and">
+                    <test property="org.eclipse.core.resources.projectNature"
+                        value="org.eclipse.jdt.core.javanature">
+                    </test>
+                </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
 </plugin>
