@@ -27,8 +27,8 @@
  */
 package nz.ac.auckland.ptjava.commands;
 
-import java.util.Map;
-
+import nz.ac.auckland.ptjava.PTJavaLog;
+import nz.ac.auckland.ptjava.builder.PTJavaClasspath;
 import nz.ac.auckland.ptjava.builder.PTJavaFileBuilderNature;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -70,20 +70,21 @@ public class AddingPTNatureHandler extends AbstractHandler {
 					javaProject = JavaCore.create(project);
 				}
 			} catch (CoreException e) {
-				e.printStackTrace();
+				PTJavaLog.logError(e);
 			}
 		}
 
 		if (project != null && javaProject != null) {
 			PTJavaFileBuilderNature.addNature(project);
 			
-			// set up compiler to not copy .ptjava files to output
-			Map options = javaProject.getOptions(false);
-			options.put(JavaCore.CORE_JAVA_BUILD_RESOURCE_COPY_FILTER,
-					"*.ptjava");
-			javaProject.setOptions(options);
-			System.out.println("ParaTask Nature added to project: " + project.getName());
+			try {
+				PTJavaClasspath.addPTRuntimeToClasspath(javaProject);
+			} catch (CoreException e) {
+				PTJavaLog.logError(e);
+			}
+			PTJavaLog.logInfo("ParaTask Nature added to project: " + project.getName());
 		}
+		
 		return null;
 	}
 }

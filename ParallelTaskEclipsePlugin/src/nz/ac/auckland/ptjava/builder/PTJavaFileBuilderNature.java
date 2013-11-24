@@ -30,6 +30,7 @@ package nz.ac.auckland.ptjava.builder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import nz.ac.auckland.ptjava.PTJavaLog;
 import nz.ac.auckland.ptjava.PTJavaPlugin;
@@ -42,6 +43,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 
 /**
  * Class for handling the PTJava nature (for associating the PTJava builder with the project).
@@ -158,9 +161,20 @@ public class PTJavaFileBuilderNature implements IProjectNature {
 		newIds.add(NATURE_ID);
 		description.setNatureIds(newIds.toArray(new String[newIds.size()]));
 	
-		// Save the description.
 		try {
+			// Save the description.
 			project.setDescription(description, null);
+			
+			if (project.hasNature(JavaCore.NATURE_ID)) {
+				IJavaProject javaProject = JavaCore.create(project);
+				// set up compiler to not copy .ptjava files to output
+				Map options = javaProject.getOptions(false);
+				options.put(JavaCore.CORE_JAVA_BUILD_RESOURCE_COPY_FILTER,
+						"*.ptjava");
+				javaProject.setOptions(options);
+			} else {
+				PTJavaLog.logInfo("The project to add ParaTask nature does not have Java nature!");
+			}
 		}
 		catch (CoreException e) {
 			PTJavaLog.logError(e);

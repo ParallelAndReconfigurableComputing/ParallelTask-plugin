@@ -140,11 +140,6 @@ public class NewProjectWizard extends Wizard implements INewWizard {
 		IJavaProject project = fSecondPage.getJavaProject();
 		PTJavaFileBuilderNature.addNature(project.getProject());
 		
-		// set up compiler to not copy .ptjava files to output
-		Map options = project.getOptions(false);
-		options.put(JavaCore.CORE_JAVA_BUILD_RESOURCE_COPY_FILTER, "*.ptjava");
-		project.setOptions(options);
-		
 		//  accept finish request
 		return true;
 	}
