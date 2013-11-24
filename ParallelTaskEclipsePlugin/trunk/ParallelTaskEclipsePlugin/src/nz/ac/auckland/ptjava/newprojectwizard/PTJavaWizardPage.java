@@ -27,21 +27,11 @@
  */
 package nz.ac.auckland.ptjava.newprojectwizard;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import nz.ac.auckland.ptjava.PTJavaPlugin;
+import nz.ac.auckland.ptjava.builder.PTJavaClasspath;
 import nz.ac.auckland.ptjava.preferences.PTJavaPreferencePage;
-import nz.ac.auckland.ptjava.preferences.PreferenceConstants;
 
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -166,7 +156,7 @@ public class PTJavaWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * Finish routine called when User selects the Finish button. Current inplementation 
+	 * Finish routine called when User selects the Finish button. Current implementation 
 	 * adds the specified PTRuntime.jar file to the Java class path.
 	 * 
 	 * Must set fJavaProject before calling.
@@ -174,31 +164,6 @@ public class PTJavaWizardPage extends WizardPage {
 	 * @param monitor The progress monitor for displaying progress to user. Currently not used 
 	 */
 	public void performFinish(IProgressMonitor monitor) {
-		try {
-			IClasspathEntry entries[] = fJavaProject.getRawClasspath();
-			List<IClasspathEntry> list = new ArrayList<IClasspathEntry>(entries.length + 1);
-			for (int i = 0; i < entries.length; i++) {
-				list.add(entries[i]);
-			}
-			
-			//  add the java runtime library
-			IPath path= null;
-			IPreferenceStore prefs= PTJavaPlugin.getDefault().getPreferenceStore(); 
-			if (prefs.getBoolean(PreferenceConstants.PTJAVA_USE_CUSTOM_RUNTIME)) {
-				path= new Path(prefs.getString(PreferenceConstants.PTJAVA_RUNTIME_PATH));
-			}
-			else {
-				path= PTJavaPreferencePage.getDefaultRuntimeJarPath();
-			}
-			list.add(JavaCore.newLibraryEntry(path, null, null));
-			
-			IClasspathEntry updatedEntries[] = new IClasspathEntry[list.size()];
-			list.toArray(updatedEntries);
-			
-			fJavaProject.setRawClasspath(updatedEntries, monitor);
-		}
-		catch (JavaModelException e) {
-			e.printStackTrace();
-		}
+		PTJavaClasspath.addPTRuntimeToClasspath(fJavaProject, monitor);
 	}
 }
