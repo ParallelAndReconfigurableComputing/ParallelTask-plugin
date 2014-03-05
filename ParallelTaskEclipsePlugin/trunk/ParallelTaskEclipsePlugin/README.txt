@@ -10,4 +10,5 @@ PTRuntime.jar. Please make sure that these two jar files are the right version t
 To build and package this project as an Eclipse plug-in jar file, you could use Eclipse -> File ->
 Export -> Plug-in Development -> Deployable plug-ins and fragments. But the most convenient way is
 to use the updatesite project to generate it with the feature jar file: open the site.xml with the
-Site Manifest Editor (its default editor), update feature versions and click 'Build All'.
+Site Manifest Editor (its default editor); clear the existing categories and features and add it 
+again, or the time stamp qualifier in the version of the feature will be wrong; then click 'Build All'.
