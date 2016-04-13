@@ -2,7 +2,7 @@
 <feature
       id="nz.ac.auckland.ptjavafeature"
       label="ParaTask Plugin"
-      version="2.2.5.qualifier"
+      version="2.3.0.qualifier"
       plugin="nz.ac.auckland.ptjava">
 
    <description>
@@ -719,6 +719,7 @@ Public License instead of this License.  But first, please read
       <import plugin="org.eclipse.jdt.ui" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.core" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ltk.core.refactoring" version="3.6.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
